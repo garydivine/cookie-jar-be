@@ -1,10 +1,3 @@
 ### Cookie Jar!
 
-Ha!  I was here
-
-Jon was here too! 
-
-and i came back!
-
-yippy skippy
-
+This is the Final Project for the Cookie Jar Team.
