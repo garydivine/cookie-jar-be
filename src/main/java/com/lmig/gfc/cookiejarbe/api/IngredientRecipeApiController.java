@@ -17,7 +17,7 @@ import com.lmig.gfc.cookiejarbe.repositories.IngredientRepository;
 import com.lmig.gfc.cookiejarbe.repositories.RecipeRepository;
 
 @RestController
-@RequestMapping("/api/ingredientToRecipe")
+@RequestMapping("/api/ingredientToRecipe/{ingredientId}/{recipeId}")
 @CrossOrigin(origins = "*")
 public class IngredientRecipeApiController {
 
@@ -35,7 +35,7 @@ public class IngredientRecipeApiController {
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Recipe create(@PathVariable int ingredientId, int recipeId,
+	public Recipe create(@PathVariable Integer ingredientId, @PathVariable Integer recipeId,
 			@RequestBody IngredientRecipeListItem ingredientRecipeListItem) {
 		Ingredient ingredient = ingredientRepo.findOne(ingredientId);
 		Recipe recipe = recipeRepo.findOne(recipeId);
