@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class IngredientRecipeListItem {
 
@@ -19,7 +21,7 @@ public class IngredientRecipeListItem {
 	private String unitOfMeasurement;
 
 	@ManyToOne()
-	// @JsonIgnore
+	@JsonIgnore
 	private Recipe recipe;
 
 	@OneToOne
