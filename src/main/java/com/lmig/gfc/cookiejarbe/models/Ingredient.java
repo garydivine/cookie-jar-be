@@ -5,12 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Ingredient {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "ingredient_id_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "ingredient_id_seq", sequenceName = "ingredient_id_seq")
 	private int id;
 
 	private String name;

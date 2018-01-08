@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -13,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class IngredientRecipeListItem {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "ingredient_recipe_id_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "ingredient_recipe_id_seq", sequenceName = "ingredient_recipe_id_seq")
 	private int id;
 
 	private int quantity;
