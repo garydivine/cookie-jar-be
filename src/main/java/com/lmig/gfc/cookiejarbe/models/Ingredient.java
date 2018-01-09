@@ -23,6 +23,7 @@ public class Ingredient {
 	private String name;
 	
 	@OneToMany(mappedBy = "ingredient")
+	@JsonIgnore
 	private List<IngredientRecipeListItem> ingredientRecipeListItem;
 	
 	public Ingredient() {

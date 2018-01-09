@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lmig.gfc.cookiejarbe.models.Ingredient;
 import com.lmig.gfc.cookiejarbe.models.IngredientRecipeListItem;
 import com.lmig.gfc.cookiejarbe.models.Recipe;
+import com.lmig.gfc.cookiejarbe.api.RecipeView;
 import com.lmig.gfc.cookiejarbe.repositories.IngredientRecipeRepository;
 import com.lmig.gfc.cookiejarbe.repositories.IngredientRepository;
 import com.lmig.gfc.cookiejarbe.repositories.RecipeRepository;
@@ -35,14 +36,14 @@ public class IngredientRecipeApiController {
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Recipe create(@PathVariable Integer ingredientId, @PathVariable Integer recipeId,
+	public RecipeView create(@PathVariable Integer ingredientId, @PathVariable Integer recipeId,
 			@RequestBody IngredientRecipeListItem ingredientRecipeListItem) {
 		Ingredient ingredient = ingredientRepo.findOne(ingredientId);
 		Recipe recipe = recipeRepo.findOne(recipeId);
 		ingredientRecipeListItem.setIngredient(ingredient);
 		ingredientRecipeListItem.setRecipe(recipe);
 		ingredientRecipeRepo.save(ingredientRecipeListItem);
-		return recipe;
+		return new RecipeView(recipe);
 	}
 
 }

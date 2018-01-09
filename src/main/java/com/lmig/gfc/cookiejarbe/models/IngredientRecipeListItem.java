@@ -27,7 +27,7 @@ public class IngredientRecipeListItem {
 	private Recipe recipe;
 
 	@ManyToOne
-	@JsonIgnore
+	//@JsonIgnore
 	private Ingredient ingredient;
 
 	public int getId() {
