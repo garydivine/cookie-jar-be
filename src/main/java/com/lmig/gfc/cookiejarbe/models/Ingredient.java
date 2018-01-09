@@ -3,11 +3,11 @@ package com.lmig.gfc.cookiejarbe.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,19 +21,19 @@ public class Ingredient {
 	private int id;
 
 	private String name;
-	
-	@OneToMany(mappedBy = "ingredient")
+
+	@OneToMany(mappedBy = "ingredient", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<IngredientRecipeListItem> ingredientRecipeListItem;
-	
+
 	public Ingredient() {
-		
+
 	}
 
 	public Ingredient(String name) {
 		this.name = name;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -57,6 +57,5 @@ public class Ingredient {
 	public void setIngredientRecipeListItem(List<IngredientRecipeListItem> ingredientRecipeListItem) {
 		this.ingredientRecipeListItem = ingredientRecipeListItem;
 	}
-
 
 }
