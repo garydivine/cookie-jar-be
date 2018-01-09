@@ -26,7 +26,8 @@ public class IngredientRecipeListItem {
 	@JsonIgnore
 	private Recipe recipe;
 
-	@OneToOne
+	@ManyToOne
+	@JsonIgnore
 	private Ingredient ingredient;
 
 	public int getId() {
