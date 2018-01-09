@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Ingredient {
 
@@ -18,6 +20,7 @@ public class Ingredient {
 	private String name;
 
 	@OneToOne(mappedBy = "ingredient")
+	@JsonIgnore
 	private IngredientRecipeListItem ingredientRecipeListItem;
 
 	public int getId() {
