@@ -1,33 +1,44 @@
 package com.lmig.gfc.cookiejarbe.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Ingredient {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "ingredient_id_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "ingredient_id_seq", sequenceName = "ingredient_id_seq")
 	private int id;
 
 	private String name;
+	
+	@OneToMany(mappedBy = "ingredient")
+	private List<IngredientRecipeListItem> ingredientRecipeListItem;
+	
+	public Ingredient() {
+		
+	}
 
-	@OneToOne(mappedBy = "ingredient")
-	private IngredientRecipeListItem ingredientRecipeListItem;
-
+	public Ingredient(String name) {
+		this.name = name;
+	}
+	
 	public int getId() {
 		return id;
 	}
 
 	public String getName() {
 		return name;
-	}
-
-	public IngredientRecipeListItem getIngredientRecipeListItem() {
-		return ingredientRecipeListItem;
 	}
 
 	public void setId(int id) {
@@ -38,8 +49,13 @@ public class Ingredient {
 		this.name = name;
 	}
 
-	public void setIngredientRecipeListItem(IngredientRecipeListItem ingredientRecipeListItem) {
+	public List<IngredientRecipeListItem> getIngredientRecipeListItem() {
+		return ingredientRecipeListItem;
+	}
+
+	public void setIngredientRecipeListItem(List<IngredientRecipeListItem> ingredientRecipeListItem) {
 		this.ingredientRecipeListItem = ingredientRecipeListItem;
 	}
+
 
 }

@@ -3,16 +3,19 @@ package com.lmig.gfc.cookiejarbe.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Recipe {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "recipe_id_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "recipe_id_seq", sequenceName = "recipe_id_seq")
 	private int id;
 
 	private String name;
@@ -25,8 +28,21 @@ public class Recipe {
 
 	private int yield;
 
-	@OneToMany(mappedBy = "recipe")
+	@OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
 	private List<IngredientRecipeListItem> ingredientRecipeListItem;
+	
+	public Recipe() {
+		
+	}
+	public Recipe(String name, String instructions, int temp, int yield, int time) {
+		this.name = name;
+		this.instructions = instructions;
+		this.temp = temp;
+		this.yield = yield;
+		this.time = time;
+		
+	
+	}
 
 	public int getId() {
 		return id;

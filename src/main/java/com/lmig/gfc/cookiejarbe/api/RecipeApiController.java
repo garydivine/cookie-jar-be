@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lmig.gfc.cookiejarbe.models.IngredientRecipeListItem;
 import com.lmig.gfc.cookiejarbe.models.Recipe;
+import com.lmig.gfc.cookiejarbe.repositories.IngredientRecipeRepository;
 import com.lmig.gfc.cookiejarbe.repositories.RecipeRepository;
 
 @RestController
@@ -23,9 +25,11 @@ import com.lmig.gfc.cookiejarbe.repositories.RecipeRepository;
 public class RecipeApiController {
 
 	private RecipeRepository recipeRepo;
+	private IngredientRecipeRepository ingredientRecipeRepo;
 
-	public RecipeApiController(RecipeRepository recipeRepo) {
+	public RecipeApiController(RecipeRepository recipeRepo, IngredientRecipeRepository ingredientRecipeRepo) {
 		this.recipeRepo = recipeRepo;
+		this.ingredientRecipeRepo = ingredientRecipeRepo;
 	}
 
 	@GetMapping("")
@@ -57,6 +61,12 @@ public class RecipeApiController {
 	@DeleteMapping("{id}")
 	public Recipe delete(@PathVariable int id) {
 		Recipe recipe = recipeRepo.findOne(id);
+		
+		List<IngredientRecipeListItem> ingredientRecipeListItems = ingredientRecipeRepo.findByRecipe(recipe);
+		
+		ingredientRecipeRepo.delete(ingredientRecipeListItems);
+		
+		recipeRepo.delete(recipeRepo.findById(id));
 		return recipe;
 	}
 }
