@@ -22,7 +22,15 @@ public class Ingredient {
 	@OneToOne(mappedBy = "ingredient")
 	@JsonIgnore
 	private IngredientRecipeListItem ingredientRecipeListItem;
+	
+	public Ingredient() {
+		
+	}
 
+	public Ingredient(String name) {
+		this.name = name;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -30,6 +30,19 @@ public class Recipe {
 
 	@OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
 	private List<IngredientRecipeListItem> ingredientRecipeListItem;
+	
+	public Recipe() {
+		
+	}
+	public Recipe(String name, String instructions, int temp, int yield, int time) {
+		this.name = name;
+		this.instructions = instructions;
+		this.temp = temp;
+		this.yield = yield;
+		this.time = time;
+		
+	
+	}
 
 	public int getId() {
 		return id;
