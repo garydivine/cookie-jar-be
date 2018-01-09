@@ -57,6 +57,7 @@ public class RecipeApiController {
 	@DeleteMapping("{id}")
 	public Recipe delete(@PathVariable int id) {
 		Recipe recipe = recipeRepo.findOne(id);
+		recipeRepo.delete(recipeRepo.findById(id));
 		return recipe;
 	}
 }
