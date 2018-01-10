@@ -1,5 +1,6 @@
 package com.lmig.gfc.cookiejarbe.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.cookiejarbe.models.IngredientRecipeListItem;
 import com.lmig.gfc.cookiejarbe.models.Recipe;
+import com.lmig.gfc.cookiejarbe.api.RecipeView;
 import com.lmig.gfc.cookiejarbe.repositories.IngredientRecipeRepository;
 import com.lmig.gfc.cookiejarbe.repositories.RecipeRepository;
+
 
 @RestController
 @RequestMapping("/api/recipes")
@@ -34,16 +37,25 @@ public class RecipeApiController {
 
 	@GetMapping("")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<Recipe> getAll() {
+	public List<RecipeView> getAll() {
 		List<Recipe> recipes = recipeRepo.findAll();
-		return recipes;
+		ArrayList<RecipeView> recipeViews = new ArrayList<RecipeView>();
+		
+		for (Recipe recipe: recipes) {
+			recipeViews.add(new RecipeView(recipe));
+		}
+		return recipeViews;
 	}
 
 	@GetMapping("{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public Recipe getOne(@PathVariable int id) {
+	public RecipeView getOne(@PathVariable int id) {
 		Recipe recipe = recipeRepo.findOne(id);
-		return recipe;
+		if (recipe == null) {
+			return null;
+		}
+		
+		return new RecipeView(recipe);
 	}
 
 	@PostMapping("")

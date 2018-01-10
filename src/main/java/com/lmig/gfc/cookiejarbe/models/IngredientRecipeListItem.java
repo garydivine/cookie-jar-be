@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,7 +26,7 @@ public class IngredientRecipeListItem {
 	private Recipe recipe;
 
 	@ManyToOne
-	@JsonIgnore
+	// @JsonIgnore
 	private Ingredient ingredient;
 
 	public int getId() {
