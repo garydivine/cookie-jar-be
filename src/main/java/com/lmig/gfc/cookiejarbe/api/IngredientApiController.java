@@ -45,7 +45,11 @@ public class IngredientApiController {
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Ingredient create(@RequestBody Ingredient ingredient) {
-		return ingredientRepo.save(ingredient);
+		Ingredient passedIngredient = ingredientRepo.findByNameIgnoringCase(ingredient.getName());
+		if(passedIngredient == null) {
+			ingredientRepo.save(ingredient);
+		}
+		return ingredient;
 	}
 
 	@PutMapping("{id}")
