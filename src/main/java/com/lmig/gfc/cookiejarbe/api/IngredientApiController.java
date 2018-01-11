@@ -3,6 +3,7 @@ package com.lmig.gfc.cookiejarbe.api;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,8 +45,16 @@ public class IngredientApiController {
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Ingredient create(@RequestBody Ingredient ingredient) {
-		return ingredientRepo.save(ingredient);
+	public ResponseEntity<Ingredient> create(@RequestBody Ingredient ingredient) {
+
+		Ingredient passedIngredient = ingredientRepo.findByNameIgnoringCase(ingredient.getName());
+
+		if (passedIngredient == null) {
+			ingredientRepo.save(ingredient);
+			return ResponseEntity.status(HttpStatus.CREATED).body(ingredient);
+		}
+
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(ingredient);
 	}
 
 	@PutMapping("{id}")
