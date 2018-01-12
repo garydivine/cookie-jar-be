@@ -2,6 +2,7 @@ package com.lmig.gfc.cookiejarbe.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ import com.lmig.gfc.cookiejarbe.repositories.IngredientRepository;
 import com.lmig.gfc.cookiejarbe.repositories.RecipeRepository;
 
 @RestController
-@RequestMapping("/api/ingredientToRecipe/{recipeId}")
+@RequestMapping("/api/ingredientToRecipe")
 @CrossOrigin(origins = "*")
 public class IngredientRecipeApiController {
 
@@ -34,7 +35,7 @@ public class IngredientRecipeApiController {
 
 	}
 	
-	@PostMapping("")
+	@PostMapping("{recipeId}")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public RecipeView create(@PathVariable Integer recipeId,
 			@RequestBody IngredientRecipeListItem ingredientRecipeListItem) {
@@ -44,5 +45,11 @@ public class IngredientRecipeApiController {
 		Recipe updatedRecipe = recipeRepo.findOne(recipeId);
 		return new RecipeView(updatedRecipe);
 	}
-
+	
+	@DeleteMapping("{ingredientRecipeListItemId}")
+	public IngredientRecipeListItem delete(@PathVariable int ingredientRecipeListItemId){
+		IngredientRecipeListItem ingredientRecipeListItem = ingredientRecipeRepo.findOne(ingredientRecipeListItemId);
+		ingredientRecipeRepo.delete(ingredientRecipeListItem);
+		return ingredientRecipeListItem;
+	}
 }
