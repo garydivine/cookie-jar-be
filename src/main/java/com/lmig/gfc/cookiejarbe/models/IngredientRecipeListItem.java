@@ -28,6 +28,17 @@ public class IngredientRecipeListItem {
 	@ManyToOne
 	// @JsonIgnore
 	private Ingredient ingredient;
+	
+	public IngredientRecipeListItem() {
+		
+	}
+
+	public IngredientRecipeListItem(int quantity, String unitOfMeasurement, Ingredient ingredient, Recipe recipe) {
+		this.quantity = quantity;
+		this.unitOfMeasurement = unitOfMeasurement;
+		this.ingredient = ingredient;
+		this.recipe = recipe;
+	}
 
 	public int getId() {
 		return id;
