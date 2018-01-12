@@ -27,7 +27,7 @@ private Recipe recipe;
 		return recipe.getTemp();
 	}
 
-	public int getTime() {
+	public String getTime() {
 		return recipe.getTime();
 	}
 

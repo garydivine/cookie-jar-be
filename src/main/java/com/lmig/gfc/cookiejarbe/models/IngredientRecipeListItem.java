@@ -17,7 +17,7 @@ public class IngredientRecipeListItem {
 	@SequenceGenerator(name = "ingredient_recipe_id_seq", sequenceName = "ingredient_recipe_id_seq")
 	private int id;
 
-	private int quantity;
+	private String quantity;
 
 	private String unitOfMeasurement;
 
@@ -33,7 +33,7 @@ public class IngredientRecipeListItem {
 		
 	}
 
-	public IngredientRecipeListItem(int quantity, String unitOfMeasurement, Ingredient ingredient, Recipe recipe) {
+	public IngredientRecipeListItem(String quantity, String unitOfMeasurement, Ingredient ingredient, Recipe recipe) {
 		this.quantity = quantity;
 		this.unitOfMeasurement = unitOfMeasurement;
 		this.ingredient = ingredient;
@@ -44,7 +44,7 @@ public class IngredientRecipeListItem {
 		return id;
 	}
 
-	public int getQuantity() {
+	public String getQuantity() {
 		return quantity;
 	}
 
@@ -64,7 +64,7 @@ public class IngredientRecipeListItem {
 		this.id = id;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 

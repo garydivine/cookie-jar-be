@@ -2,6 +2,7 @@ package com.lmig.gfc.cookiejarbe.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,8 +23,9 @@ public class Recipe {
 
 	private int temp;
 
-	private int time;
+	private String time;
 
+	@Column(length = 1000)
 	private String instructions;
 
 	private int yield;
@@ -34,7 +36,7 @@ public class Recipe {
 	public Recipe() {
 		
 	}
-	public Recipe(String name, String instructions, int temp, int yield, int time) {
+	public Recipe(String name, String instructions, int temp, int yield, String time) {
 		this.name = name;
 		this.instructions = instructions;
 		this.temp = temp;
@@ -56,7 +58,7 @@ public class Recipe {
 		return temp;
 	}
 
-	public int getTime() {
+	public String getTime() {
 		return time;
 	}
 
@@ -84,7 +86,7 @@ public class Recipe {
 		this.temp = temp;
 	}
 
-	public void setTime(int time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 
