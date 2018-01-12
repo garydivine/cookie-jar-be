@@ -3,11 +3,11 @@ package com.lmig.gfc.cookiejarbe.config;
 import org.springframework.context.annotation.Configuration;
 
 import com.lmig.gfc.cookiejarbe.models.Ingredient;
-import com.lmig.gfc.cookiejarbe.models.Recipe;
 import com.lmig.gfc.cookiejarbe.models.IngredientRecipeListItem;
+import com.lmig.gfc.cookiejarbe.models.Recipe;
+import com.lmig.gfc.cookiejarbe.repositories.IngredientRecipeRepository;
 import com.lmig.gfc.cookiejarbe.repositories.IngredientRepository;
 import com.lmig.gfc.cookiejarbe.repositories.RecipeRepository;
-import com.lmig.gfc.cookiejarbe.repositories.IngredientRecipeRepository;
 
 @Configuration
 public class SeedData {
@@ -50,7 +50,7 @@ public class SeedData {
 
 		Ingredient regularRolledOats = new Ingredient(" regular rolled oats");
 		ingredientRepo.save(regularRolledOats);
-		
+
 		Ingredient quickCookingOats = new Ingredient(" quick cooking oats");
 		ingredientRepo.save(quickCookingOats);
 
@@ -89,20 +89,22 @@ public class SeedData {
 
 		Ingredient powderedSugar = new Ingredient("powdered sugar");
 		ingredientRepo.save(powderedSugar);
-		
+
 		Ingredient coldWater = new Ingredient("cold water");
 		ingredientRepo.save(coldWater);
 
-		Recipe oatmealRaisinCookie = new Recipe("Oatmeal Raisin",
+		Recipe oatmealRaisinCookie = new Recipe("Oatmeal",
 				"Pre-heat oven to 375 degrees F. In large bowl, cream together butter, white sugar, and brown sugar until smooth. Beat in the eggs and vanilla until fluffy. Stir together flour, baking soda, cinnamon, and salt. Gradually beat into butter mixture. Stir in oats and raisins. Drop by teaspoonfuls onto ungreased cookie sheet. Bake 8 to 10 minutes in the preheated oven, or until golden brown. Cool slightly, remove from sheet to wire rack. Cool completely.",
 				375, 24, "8 minutes");
 		recipeRepo.save(oatmealRaisinCookie);
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/4", "cups", flour, oatmealRaisinCookie));
-		ingredientRecipeRepo.save(new IngredientRecipeListItem("2 3/4", "cups", regularRolledOats, oatmealRaisinCookie));
+		ingredientRecipeRepo
+				.save(new IngredientRecipeListItem("2 3/4", "cups", regularRolledOats, oatmealRaisinCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup", raisins, oatmealRaisinCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "", eggs, oatmealRaisinCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", vanilla, oatmealRaisinCookie));
-		ingredientRecipeRepo.save(new IngredientRecipeListItem("3/4", "cup", packedLightBrownSugar, oatmealRaisinCookie));
+		ingredientRecipeRepo
+				.save(new IngredientRecipeListItem("3/4", "cup", packedLightBrownSugar, oatmealRaisinCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", bakingSoda, oatmealRaisinCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("3/4", "teaspoon", groundCinnamon, oatmealRaisinCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1/2", "teaspoon", salt, oatmealRaisinCookie));
@@ -116,9 +118,11 @@ public class SeedData {
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2 1/4", "cups", flour, chocolateChipCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "", eggs, chocolateChipCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", vanilla, chocolateChipCookie));
-		ingredientRecipeRepo.save(new IngredientRecipeListItem("3/4", "cup", packedLightBrownSugar, chocolateChipCookie));
+		ingredientRecipeRepo
+				.save(new IngredientRecipeListItem("3/4", "cup", packedLightBrownSugar, chocolateChipCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("3/4", "cup", whiteSugar, chocolateChipCookie));
-		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "cups", semisweetChocolateChips, chocolateChipCookie));
+		ingredientRecipeRepo
+				.save(new IngredientRecipeListItem("2", "cups", semisweetChocolateChips, chocolateChipCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", bakingSoda, chocolateChipCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup", butter, chocolateChipCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", salt, chocolateChipCookie));
@@ -132,7 +136,8 @@ public class SeedData {
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", vanilla, peanutButterCloudCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup", powderedSugar, peanutButterCloudCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup", whiteSugar, peanutButterCloudCookie));
-		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup", creamyPeanutButter, peanutButterCloudCookie));
+		ingredientRecipeRepo
+				.save(new IngredientRecipeListItem("1", "cup", creamyPeanutButter, peanutButterCloudCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "teaspoons", bakingSoda, peanutButterCloudCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup", shortening, peanutButterCloudCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", salt, peanutButterCloudCookie));
@@ -150,24 +155,21 @@ public class SeedData {
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup", coldWater, dateBar));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", salt, dateBar));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/2", "cups ", packedLightBrownSugar, dateBar));
-		
-		Recipe chocolateCoconutHaystack = new Recipe("Chocolate Coconut Haystack", 
-				"In a large pot mix together the sugar, cocoa and milk. Cook on medium/low heat for about 5 minutes or until the sugar dissolves. Turn the heat up to medium and add butter and allow that to melt and come to a low boil.Stir in oats, salt and vanilla – mix well. Finally add in coconut and stir until everything is coated. Drop by teaspoon onto a parchment paper lined cookie sheet and let set.", 0, 24, "no bake");
+
+		Recipe chocolateCoconutHaystack = new Recipe("Chocolate Coconut Haystack",
+				"In a large pot mix together the sugar, cocoa and milk. Cook on medium/low heat for about 5 minutes or until the sugar dissolves. Turn the heat up to medium and add butter and allow that to melt and come to a low boil.Stir in oats, salt and vanilla – mix well. Finally add in coconut and stir until everything is coated. Drop by teaspoon onto a parchment paper lined cookie sheet and let set.",
+				0, 24, "no bake");
 		recipeRepo.save(chocolateCoconutHaystack);
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/4", "cups", whiteSugar, chocolateCoconutHaystack));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("5 ", "tablespoons", cocoa, chocolateCoconutHaystack));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1/2", "cup", milk, chocolateCoconutHaystack));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1/2", "cup", butter, chocolateCoconutHaystack));
-		ingredientRecipeRepo.save(new IngredientRecipeListItem("3", "cups", quickCookingOats, chocolateCoconutHaystack));
+		ingredientRecipeRepo
+				.save(new IngredientRecipeListItem("3", "cups", quickCookingOats, chocolateCoconutHaystack));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("pinch", "", salt, chocolateCoconutHaystack));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup", coldWater, chocolateCoconutHaystack));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", vanilla, chocolateCoconutHaystack));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "cup ", shreddedCoconut, chocolateCoconutHaystack));
-
-	
-		
-		 
-		
 
 	}
 
