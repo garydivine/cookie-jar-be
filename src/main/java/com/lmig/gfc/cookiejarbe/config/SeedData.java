@@ -21,13 +21,13 @@ public class SeedData {
 		Ingredient raisins = new Ingredient("raisins");
 		ingredientRepo.save(raisins);
 
-		Ingredient whiteSugar = new Ingredient(" white sugar");
+		Ingredient whiteSugar = new Ingredient("sugar(white)");
 		ingredientRepo.save(whiteSugar);
 
-		Ingredient packedLightBrownSugar = new Ingredient("packed light brown sugar");
+		Ingredient packedLightBrownSugar = new Ingredient("brown sugar(light)");
 		ingredientRepo.save(packedLightBrownSugar);
 
-		Ingredient packedDarkBrownSugar = new Ingredient("packed dark brown sugar");
+		Ingredient packedDarkBrownSugar = new Ingredient("brown sugar(dark)");
 		ingredientRepo.save(packedDarkBrownSugar);
 
 		Ingredient bakingSoda = new Ingredient("baking soda");
@@ -36,7 +36,7 @@ public class SeedData {
 		Ingredient salt = new Ingredient("salt");
 		ingredientRepo.save(salt);
 
-		Ingredient creamyPeanutButter = new Ingredient(" creamy peanut butter");
+		Ingredient creamyPeanutButter = new Ingredient("peanut butter(creamy)");
 		ingredientRepo.save(creamyPeanutButter);
 
 		Ingredient dates = new Ingredient("dates");
@@ -48,13 +48,13 @@ public class SeedData {
 		Ingredient vanilla = new Ingredient("vanilla");
 		ingredientRepo.save(vanilla);
 
-		Ingredient regularRolledOats = new Ingredient(" regular rolled oats");
+		Ingredient regularRolledOats = new Ingredient("oats(regular)");
 		ingredientRepo.save(regularRolledOats);
 
-		Ingredient quickCookingOats = new Ingredient(" quick cooking oats");
+		Ingredient quickCookingOats = new Ingredient("oats(quick cooking)");
 		ingredientRepo.save(quickCookingOats);
 
-		Ingredient semisweetChocolateChips = new Ingredient("semi-sweet chocolate chips");
+		Ingredient semisweetChocolateChips = new Ingredient("chocolate chips(semi-sweet)");
 		ingredientRepo.save(semisweetChocolateChips);
 
 		Ingredient butter = new Ingredient("butter");
@@ -63,7 +63,7 @@ public class SeedData {
 		Ingredient eggs = new Ingredient("eggs");
 		ingredientRepo.save(eggs);
 
-		Ingredient shreddedCoconut = new Ingredient(" shredded coconut");
+		Ingredient shreddedCoconut = new Ingredient("coconut(shredded)");
 		ingredientRepo.save(shreddedCoconut);
 
 		Ingredient cocoa = new Ingredient("cocoa");
@@ -72,7 +72,7 @@ public class SeedData {
 		Ingredient riceCrispies = new Ingredient("rice crispies");
 		ingredientRepo.save(riceCrispies);
 
-		Ingredient lightKaroSyrup = new Ingredient("light karo syrup ");
+		Ingredient lightKaroSyrup = new Ingredient("karo syrup(light)");
 		ingredientRepo.save(lightKaroSyrup);
 
 		Ingredient molasses = new Ingredient("molasses");
@@ -81,19 +81,19 @@ public class SeedData {
 		Ingredient shortening = new Ingredient("shortening");
 		ingredientRepo.save(shortening);
 
-		Ingredient groundGinger = new Ingredient("ground ginger");
+		Ingredient groundGinger = new Ingredient("ginger(ground)");
 		ingredientRepo.save(groundGinger);
 
-		Ingredient groundCinnamon = new Ingredient("ground cinnamon");
+		Ingredient groundCinnamon = new Ingredient("cinnamon(ground)");
 		ingredientRepo.save(groundCinnamon);
 
-		Ingredient powderedSugar = new Ingredient("powdered sugar");
+		Ingredient powderedSugar = new Ingredient("sugar(powdered)");
 		ingredientRepo.save(powderedSugar);
 
 		Ingredient coldWater = new Ingredient("cold water");
 		ingredientRepo.save(coldWater);
 
-		Recipe oatmealRaisinCookie = new Recipe("Oatmeal",
+		Recipe oatmealRaisinCookie = new Recipe("Oatmeal Raisin",
 				"Pre-heat oven to 375 degrees F. In large bowl, cream together butter, white sugar, and brown sugar until smooth. Beat in the eggs and vanilla until fluffy. Stir together flour, baking soda, cinnamon, and salt. Gradually beat into butter mixture. Stir in oats and raisins. Drop by teaspoonfuls onto ungreased cookie sheet. Bake 8 to 10 minutes in the preheated oven, or until golden brown. Cool slightly, remove from sheet to wire rack. Cool completely.",
 				375, 24, "8 minutes");
 		recipeRepo.save(oatmealRaisinCookie);

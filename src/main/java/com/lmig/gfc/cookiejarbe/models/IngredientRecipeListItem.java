@@ -1,5 +1,6 @@
 package com.lmig.gfc.cookiejarbe.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class IngredientRecipeListItem {
 	@GeneratedValue(generator = "ingredient_recipe_id_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "ingredient_recipe_id_seq", sequenceName = "ingredient_recipe_id_seq")
 	private int id;
-
+	
+	@Column(nullable = false)
 	private String quantity;
 
 	private String unitOfMeasurement;

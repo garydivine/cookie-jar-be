@@ -2,6 +2,7 @@ package com.lmig.gfc.cookiejarbe.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,8 @@ public class Ingredient {
 	@GeneratedValue(generator = "ingredient_id_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "ingredient_id_seq", sequenceName = "ingredient_id_seq")
 	private int id;
-
+	
+	@Column(nullable = false)
 	private String name;
 
 	@OneToMany(mappedBy = "ingredient", fetch = FetchType.EAGER)

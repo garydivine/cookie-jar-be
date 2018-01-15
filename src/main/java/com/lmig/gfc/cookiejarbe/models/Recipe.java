@@ -18,14 +18,15 @@ public class Recipe {
 	@GeneratedValue(generator = "recipe_id_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "recipe_id_seq", sequenceName = "recipe_id_seq")
 	private int id;
-
+	
+	@Column(nullable = false)
 	private String name;
 
 	private int temp;
 
 	private String time;
 
-	@Column(length = 1000)
+	@Column(length = 1000, nullable = false)
 	private String instructions;
 
 	private int yield;
