@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -18,7 +19,7 @@ public class Recipe {
 	@GeneratedValue(generator = "recipe_id_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "recipe_id_seq", sequenceName = "recipe_id_seq")
 	private int id;
-	
+
 	@Column(nullable = false)
 	private String name;
 
@@ -33,18 +34,21 @@ public class Recipe {
 
 	@OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
 	private List<IngredientRecipeListItem> ingredientRecipeListItem;
-	
+
+	@ManyToOne
+	private User user;
+
 	public Recipe() {
-		
+
 	}
+
 	public Recipe(String name, String instructions, int temp, int yield, String time) {
 		this.name = name;
 		this.instructions = instructions;
 		this.temp = temp;
 		this.yield = yield;
 		this.time = time;
-		
-	
+
 	}
 
 	public int getId() {
@@ -101,6 +105,14 @@ public class Recipe {
 
 	public void setIngredientRecipeListItem(List<IngredientRecipeListItem> ingredientRecipeListItem) {
 		this.ingredientRecipeListItem = ingredientRecipeListItem;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
