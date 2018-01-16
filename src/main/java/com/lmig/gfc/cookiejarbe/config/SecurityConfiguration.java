@@ -31,7 +31,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/", "/css/**").permitAll()
-				.antMatchers("/api/requests/**").hasRole("ADMIN").anyRequest().authenticated().and().httpBasic();
+				.antMatchers("/api/requests/**", "/api/ingredients/**").hasRole("ADMIN").anyRequest().authenticated()
+				.and().httpBasic();
+
 	}
 
 	// From Invoicify
