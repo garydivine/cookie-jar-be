@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().authorizeRequests().antMatchers(HttpMethod.GET, "/", "/css/**").permitAll()
+		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/", "/css/**").permitAll()
 				.antMatchers("/api/requests/**").hasRole("ADMIN").anyRequest().authenticated().and().httpBasic();
 	}
 
