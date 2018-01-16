@@ -38,15 +38,15 @@ public class RecipeApiController {
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<RecipeView> getAll(@RequestParam(value = "name", required = false) String name) {
 
-		List<Recipe> recipes = recipeRepo.findAll();
-		List<Recipe> recipesWithName = recipeRepo.findByNameIgnoringCase(name);
 		ArrayList<RecipeView> recipeViews = new ArrayList<RecipeView>();
 
 		if (name != null) {
+			List<Recipe> recipesWithName = recipeRepo.findByNameIgnoringCaseContaining(name);
 			for (Recipe recipe : recipesWithName) {
 				recipeViews.add(new RecipeView(recipe));
 			}
 		} else if (name == null) {
+			List<Recipe> recipes = recipeRepo.findAll();
 			for (Recipe recipe : recipes) {
 				recipeViews.add(new RecipeView(recipe));
 			}
