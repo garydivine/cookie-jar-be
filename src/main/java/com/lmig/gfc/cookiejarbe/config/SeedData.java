@@ -1,6 +1,7 @@
 package com.lmig.gfc.cookiejarbe.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.lmig.gfc.cookiejarbe.models.Ingredient;
 import com.lmig.gfc.cookiejarbe.models.IngredientRecipeListItem;
@@ -14,23 +15,32 @@ import com.lmig.gfc.cookiejarbe.repositories.UserRepository;
 @Configuration
 public class SeedData {
 
-	public SeedData(IngredientRepository ingredientRepo, RecipeRepository recipeRepo,
-			IngredientRecipeRepository ingredientRecipeRepo, UserRepository userRepo) {
+	public SeedData(IngredientRepository ingredientRepo, //
+			RecipeRepository recipeRepo, //
+			IngredientRecipeRepository ingredientRecipeRepo, //
+			UserRepository userRepo, //
+			PasswordEncoder encoder) {
 
-		User jon = new User("Jon");
-		userRepo.save(jon);
-
-		User marci = new User("Marci");
-		userRepo.save(marci);
-
-		User karen = new User("Karen");
+		String karenEncodedPassword = encoder.encode("password");
+		User karen = new User();
+		karen.setUsername("admin");
+		karen.setPassword(karenEncodedPassword);
+		karen.addRole("ADMIN");
 		userRepo.save(karen);
 
-		User gary = new User("Gary");
-		userRepo.save(gary);
+		String marciEncodedPassword = encoder.encode("password");
+		User marci = new User();
+		marci.setUsername("marci");
+		marci.setPassword(marciEncodedPassword);
+		marci.addRole("BAKER");
+		userRepo.save(marci);
 
-		User david = new User("David");
-		userRepo.save(david);
+		String garyEncodedPassword = encoder.encode("password");
+		User gary = new User();
+		gary.setUsername("gary");
+		gary.setPassword(garyEncodedPassword);
+		gary.addRole("BAKER");
+		userRepo.save(gary);
 
 		Ingredient flour = new Ingredient("flour");
 		ingredientRepo.save(flour);
@@ -115,7 +125,7 @@ public class SeedData {
 				"375", "24", "8 minutes");
 
 		recipeRepo.save(oatmealRaisinCookie);
-		oatmealRaisinCookie.setUser(david);
+		oatmealRaisinCookie.setUser(karen);
 		recipeRepo.save(oatmealRaisinCookie);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/4", "cups", flour, oatmealRaisinCookie));
@@ -175,7 +185,7 @@ public class SeedData {
 				"Pre-heat oven to 350 degrees F. In large bowl, mix flour baking soda, salt, oats and brown sugar until crumbly. pat half the mixture in the bottom of a 9x13 pan. In a medium sauce pan, add cut up dates, cold water and sugar. cook on medium heat until mixture is mushy. spread mixture over oatmeal mixture in pan. cover date mixture with remaining oatmeal mixture and pat firmly. Bake at 350 for 40 to 45 minutes","350", "24", "40 to 45 minutes");
 
 		recipeRepo.save(dateBar);
-		dateBar.setUser(jon);
+		dateBar.setUser(karen);
 		recipeRepo.save(dateBar);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/2", "cups", flour, dateBar));
@@ -193,7 +203,7 @@ public class SeedData {
 				"0","24","no bake");
 
 		recipeRepo.save(chocolateCoconutHaystack);
-		chocolateCoconutHaystack.setUser(gary);
+		chocolateCoconutHaystack.setUser(karen);
 		recipeRepo.save(chocolateCoconutHaystack);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/4", "cups", whiteSugar, chocolateCoconutHaystack));

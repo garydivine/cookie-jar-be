@@ -8,4 +8,6 @@ import com.lmig.gfc.cookiejarbe.models.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+	public User findByUsername(String username);
+
 }
