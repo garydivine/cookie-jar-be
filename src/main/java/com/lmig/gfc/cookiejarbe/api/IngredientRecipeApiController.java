@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lmig.gfc.cookiejarbe.models.Ingredient;
 import com.lmig.gfc.cookiejarbe.models.IngredientRecipeListItem;
 import com.lmig.gfc.cookiejarbe.models.Recipe;
-import com.lmig.gfc.cookiejarbe.api.RecipeView;
 import com.lmig.gfc.cookiejarbe.repositories.IngredientRecipeRepository;
 import com.lmig.gfc.cookiejarbe.repositories.IngredientRepository;
 import com.lmig.gfc.cookiejarbe.repositories.RecipeRepository;
@@ -34,7 +32,7 @@ public class IngredientRecipeApiController {
 		this.recipeRepo = recipeRepo;
 
 	}
-	
+
 	@PostMapping("{recipeId}")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public RecipeView create(@PathVariable Integer recipeId,
@@ -45,9 +43,9 @@ public class IngredientRecipeApiController {
 		Recipe updatedRecipe = recipeRepo.findOne(recipeId);
 		return new RecipeView(updatedRecipe);
 	}
-	
+
 	@DeleteMapping("{ingredientRecipeListItemId}")
-	public IngredientRecipeListItem delete(@PathVariable int ingredientRecipeListItemId){
+	public IngredientRecipeListItem delete(@PathVariable int ingredientRecipeListItemId) {
 		IngredientRecipeListItem ingredientRecipeListItem = ingredientRecipeRepo.findOne(ingredientRecipeListItemId);
 		ingredientRecipeRepo.delete(ingredientRecipeListItem);
 		return ingredientRecipeListItem;

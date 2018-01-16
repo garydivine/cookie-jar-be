@@ -21,26 +21,7 @@ public class SeedData {
 			UserRepository userRepo, //
 			PasswordEncoder encoder) {
 
-		String karenEncodedPassword = encoder.encode("password");
-		User karen = new User();
-		karen.setUsername("admin");
-		karen.setPassword(karenEncodedPassword);
-		karen.addRole("ADMIN");
-		userRepo.save(karen);
-
-		String marciEncodedPassword = encoder.encode("password");
-		User marci = new User();
-		marci.setUsername("marci");
-		marci.setPassword(marciEncodedPassword);
-		marci.addRole("BAKER");
-		userRepo.save(marci);
-
-		String garyEncodedPassword = encoder.encode("password");
-		User gary = new User();
-		gary.setUsername("gary");
-		gary.setPassword(garyEncodedPassword);
-		gary.addRole("BAKER");
-		userRepo.save(gary);
+		User admin = userRepo.save(new User("admin", "user", "admin@admin.com", encoder.encode("password")));
 
 		Ingredient flour = new Ingredient("flour");
 		ingredientRepo.save(flour);
@@ -125,8 +106,6 @@ public class SeedData {
 				"375", "24", "8 minutes");
 
 		recipeRepo.save(oatmealRaisinCookie);
-		oatmealRaisinCookie.setUser(karen);
-		recipeRepo.save(oatmealRaisinCookie);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/4", "cups", flour, oatmealRaisinCookie));
 		ingredientRecipeRepo
@@ -147,8 +126,6 @@ public class SeedData {
 				"375", "24", "8 to 10 minutes");
 
 		recipeRepo.save(chocolateChipCookie);
-		chocolateChipCookie.setUser(karen);
-		recipeRepo.save(chocolateChipCookie);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2 1/4", "cups", flour, chocolateChipCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "", eggs, chocolateChipCookie));
@@ -167,8 +144,6 @@ public class SeedData {
 				"350", "60", "12 to 15 minutes");
 
 		recipeRepo.save(peanutButterCloudCookie);
-		peanutButterCloudCookie.setUser(marci);
-		recipeRepo.save(peanutButterCloudCookie);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "cups", flour, peanutButterCloudCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "", eggs, peanutButterCloudCookie));
@@ -185,8 +160,6 @@ public class SeedData {
 				"Pre-heat oven to 350 degrees F. In large bowl, mix flour baking soda, salt, oats and brown sugar until crumbly. pat half the mixture in the bottom of a 9x13 pan. In a medium sauce pan, add cut up dates, cold water and sugar. cook on medium heat until mixture is mushy. spread mixture over oatmeal mixture in pan. cover date mixture with remaining oatmeal mixture and pat firmly. Bake at 350 for 40 to 45 minutes","350", "24", "40 to 45 minutes");
 
 		recipeRepo.save(dateBar);
-		dateBar.setUser(karen);
-		recipeRepo.save(dateBar);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/2", "cups", flour, dateBar));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 to 1/2 ", "pounds", dates, dateBar));
@@ -202,8 +175,6 @@ public class SeedData {
 				"In a large pot mix together the sugar, cocoa and milk. Cook on medium/low heat for about 5 minutes or until the sugar dissolves. Turn the heat up to medium and add butter and allow that to melt and come to a low boil.Stir in oats, salt and vanilla – mix well. Finally add in coconut and stir until everything is coated. Drop by teaspoon onto a parchment paper lined cookie sheet and let set.",
 				"0","24","no bake");
 
-		recipeRepo.save(chocolateCoconutHaystack);
-		chocolateCoconutHaystack.setUser(karen);
 		recipeRepo.save(chocolateCoconutHaystack);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/4", "cups", whiteSugar, chocolateCoconutHaystack));
