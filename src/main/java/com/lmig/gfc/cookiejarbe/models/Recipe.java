@@ -23,14 +23,14 @@ public class Recipe {
 	@Column(nullable = false)
 	private String name;
 
-	private int temp;
+	private String temp;
 
 	private String time;
 
 	@Column(length = 1000, nullable = false)
 	private String instructions;
 
-	private int yield;
+	private String yield;
 
 	@OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
 	private List<IngredientRecipeListItem> ingredientRecipeListItem;
@@ -42,7 +42,7 @@ public class Recipe {
 
 	}
 
-	public Recipe(String name, String instructions, int temp, int yield, String time) {
+	public Recipe(String name, String instructions, String temp, String yield, String time) {
 		this.name = name;
 		this.instructions = instructions;
 		this.temp = temp;
@@ -59,7 +59,7 @@ public class Recipe {
 		return name;
 	}
 
-	public int getTemp() {
+	public String getTemp() {
 		return temp;
 	}
 
@@ -71,7 +71,7 @@ public class Recipe {
 		return instructions;
 	}
 
-	public int getYield() {
+	public String getYield() {
 		return yield;
 	}
 
@@ -87,7 +87,7 @@ public class Recipe {
 		this.name = name;
 	}
 
-	public void setTemp(int temp) {
+	public void setTemp(String temp) {
 		this.temp = temp;
 	}
 
@@ -99,7 +99,7 @@ public class Recipe {
 		this.instructions = instructions;
 	}
 
-	public void setYield(int yield) {
+	public void setYield(String yield) {
 		this.yield = yield;
 	}
 

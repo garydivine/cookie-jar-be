@@ -22,7 +22,7 @@ public class RecipeView {
 		return recipe.getName();
 	}
 
-	public int getTemp() {
+	public String getTemp() {
 		return recipe.getTemp();
 	}
 
@@ -34,7 +34,7 @@ public class RecipeView {
 		return recipe.getInstructions();
 	}
 
-	public int getYield() {
+	public String getYield() {
 		return recipe.getYield();
 	}
 
