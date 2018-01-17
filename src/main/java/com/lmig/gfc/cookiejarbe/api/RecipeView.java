@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lmig.gfc.cookiejarbe.models.IngredientRecipeListItem;
-import com.lmig.gfc.cookiejarbe.api.IngredientRecipeListItemView;
 import com.lmig.gfc.cookiejarbe.models.Recipe;
 
 public class RecipeView {
 
-private Recipe recipe;
-	
+	private Recipe recipe;
+
 	public RecipeView(Recipe recipe) {
 		this.recipe = recipe;
 	}
-	
+
 	public int getId() {
 		return recipe.getId();
 	}
@@ -23,11 +22,11 @@ private Recipe recipe;
 		return recipe.getName();
 	}
 
-	public int getTemp() {
+	public String getTemp() {
 		return recipe.getTemp();
 	}
 
-	public int getTime() {
+	public String getTime() {
 		return recipe.getTime();
 	}
 
@@ -35,15 +34,16 @@ private Recipe recipe;
 		return recipe.getInstructions();
 	}
 
-	public int getYield() {
+	public String getYield() {
 		return recipe.getYield();
 	}
 
 	public List<IngredientRecipeListItemView> getIngredientRecipeListItem() {
 		ArrayList<IngredientRecipeListItemView> views = new ArrayList<IngredientRecipeListItemView>();
-		for (IngredientRecipeListItem ingredientRecipeListItem: recipe.getIngredientRecipeListItem()) {
+		for (IngredientRecipeListItem ingredientRecipeListItem : recipe.getIngredientRecipeListItem()) {
 			views.add(new IngredientRecipeListItemView(ingredientRecipeListItem));
 		}
 		return views;
 	}
+
 }

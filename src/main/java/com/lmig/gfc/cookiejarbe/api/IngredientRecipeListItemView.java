@@ -14,7 +14,7 @@ private IngredientRecipeListItem ingredientRecipeListItem;
 		return ingredientRecipeListItem.getId();
 	}
 
-	public int getQuantity() {
+	public String getQuantity() {
 		return ingredientRecipeListItem.getQuantity();
 	}
 

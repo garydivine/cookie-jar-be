@@ -2,11 +2,13 @@ package com.lmig.gfc.cookiejarbe.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -18,30 +20,35 @@ public class Recipe {
 	@SequenceGenerator(name = "recipe_id_seq", sequenceName = "recipe_id_seq")
 	private int id;
 
+	@Column(nullable = false)
 	private String name;
 
-	private int temp;
+	private String temp;
 
-	private int time;
+	private String time;
 
+	@Column(length = 1000, nullable = false)
 	private String instructions;
 
-	private int yield;
+	private String yield;
 
 	@OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
 	private List<IngredientRecipeListItem> ingredientRecipeListItem;
-	
+
+	@ManyToOne
+	private User user;
+
 	public Recipe() {
-		
+
 	}
-	public Recipe(String name, String instructions, int temp, int yield, int time) {
+
+	public Recipe(String name, String instructions, String temp, String yield, String time) {
 		this.name = name;
 		this.instructions = instructions;
 		this.temp = temp;
 		this.yield = yield;
 		this.time = time;
-		
-	
+
 	}
 
 	public int getId() {
@@ -52,11 +59,11 @@ public class Recipe {
 		return name;
 	}
 
-	public int getTemp() {
+	public String getTemp() {
 		return temp;
 	}
 
-	public int getTime() {
+	public String getTime() {
 		return time;
 	}
 
@@ -64,7 +71,7 @@ public class Recipe {
 		return instructions;
 	}
 
-	public int getYield() {
+	public String getYield() {
 		return yield;
 	}
 
@@ -80,11 +87,11 @@ public class Recipe {
 		this.name = name;
 	}
 
-	public void setTemp(int temp) {
+	public void setTemp(String temp) {
 		this.temp = temp;
 	}
 
-	public void setTime(int time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 
@@ -92,12 +99,20 @@ public class Recipe {
 		this.instructions = instructions;
 	}
 
-	public void setYield(int yield) {
+	public void setYield(String yield) {
 		this.yield = yield;
 	}
 
 	public void setIngredientRecipeListItem(List<IngredientRecipeListItem> ingredientRecipeListItem) {
 		this.ingredientRecipeListItem = ingredientRecipeListItem;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
