@@ -24,7 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().authorizeRequests()
 				// allow access without auth to the following routes
-				.antMatchers(HttpMethod.GET, "/img/**", "/css/**", "/js/**", "/", "/api/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/img/**", "/css/**", "/js/**", "/api/**").permitAll()
 				.antMatchers(HttpMethod.DELETE, "/api/users/new", "/api/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/users/new", "/api/**").permitAll()
 				.antMatchers(HttpMethod.PUT, "/api/session/mine", "/api/**").permitAll().antMatchers(HttpMethod.OPTIONS)
