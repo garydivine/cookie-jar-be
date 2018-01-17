@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.cookiejarbe.models.User;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/session")
+@CrossOrigin(origins = "*")
 public class SessionApiController {
 
 	private UserDetailsService userDetails;
