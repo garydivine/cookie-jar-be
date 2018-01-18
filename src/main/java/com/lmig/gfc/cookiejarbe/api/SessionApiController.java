@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.cookiejarbe.models.User;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/session")
+@CrossOrigin(origins = "*")
 public class SessionApiController {
 
 	private UserDetailsService userDetails;
@@ -34,9 +34,8 @@ public class SessionApiController {
 	}
 
 	// gets currently logged in user
-	@GetMapping("/mine")
-	public Long getLoggedInUserIdBecauseThatSoundsFunEvenThoughItMayNotActuallyBeFunInTheTrueSenseOfTheWord(
-			Authentication auth) {
+	@GetMapping("/login")
+	public Long getLoggedInUserId(Authentication auth) {
 		if (auth != null) {
 			return ((User) auth.getPrincipal()).getId();
 		}
@@ -44,7 +43,7 @@ public class SessionApiController {
 	}
 
 	// logs in a user
-	@PutMapping("/mine")
+	@PutMapping("/login")
 	public UserDetails login(@RequestBody Credentials credentials) {
 		UserDetails details = userDetails.loadUserByUsername(credentials.getUsername());
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(details,
@@ -59,7 +58,7 @@ public class SessionApiController {
 	}
 
 	// logs out a user
-	@DeleteMapping("/mine")
+	@DeleteMapping("/login")
 	public Boolean logout(Authentication auth, HttpServletRequest request, HttpServletResponse response) {
 		new SecurityContextLogoutHandler().logout(request, response, auth);
 		return true;

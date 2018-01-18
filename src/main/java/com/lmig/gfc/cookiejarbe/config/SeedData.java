@@ -22,6 +22,8 @@ public class SeedData {
 			PasswordEncoder encoder) {
 
 		User admin = userRepo.save(new User("admin", "user", "admin@admin.com", encoder.encode("password")));
+		User karen = userRepo.save(new User("Karen", "A", "karen@cookie.jar", encoder.encode("password")));
+		User marci = userRepo.save(new User("Marci", "T", "marci@cookie.jar", encoder.encode("password")));
 
 		Ingredient flour = new Ingredient("flour");
 		ingredientRepo.save(flour);
@@ -157,7 +159,8 @@ public class SeedData {
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1", "teaspoon", salt, peanutButterCloudCookie));
 
 		Recipe dateBar = new Recipe("Date Bar",
-				"Pre-heat oven to 350 degrees F. In large bowl, mix flour baking soda, salt, oats and brown sugar until crumbly. pat half the mixture in the bottom of a 9x13 pan. In a medium sauce pan, add cut up dates, cold water and sugar. cook on medium heat until mixture is mushy. spread mixture over oatmeal mixture in pan. cover date mixture with remaining oatmeal mixture and pat firmly. Bake at 350 for 40 to 45 minutes","350", "24", "40 to 45 minutes");
+				"Pre-heat oven to 350 degrees F. In large bowl, mix flour baking soda, salt, oats and brown sugar until crumbly. pat half the mixture in the bottom of a 9x13 pan. In a medium sauce pan, add cut up dates, cold water and sugar. cook on medium heat until mixture is mushy. spread mixture over oatmeal mixture in pan. cover date mixture with remaining oatmeal mixture and pat firmly. Bake at 350 for 40 to 45 minutes",
+				"350", "24", "40 to 45 minutes");
 
 		recipeRepo.save(dateBar);
 
@@ -173,7 +176,7 @@ public class SeedData {
 
 		Recipe chocolateCoconutHaystack = new Recipe("Chocolate Coconut Haystack",
 				"In a large pot mix together the sugar, cocoa and milk. Cook on medium/low heat for about 5 minutes or until the sugar dissolves. Turn the heat up to medium and add butter and allow that to melt and come to a low boil.Stir in oats, salt and vanilla – mix well. Finally add in coconut and stir until everything is coated. Drop by teaspoon onto a parchment paper lined cookie sheet and let set.",
-				"0","24","no bake");
+				"0", "24", "no bake");
 
 		recipeRepo.save(chocolateCoconutHaystack);
 
