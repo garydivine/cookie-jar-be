@@ -25,9 +25,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.cors().and().authorizeRequests()
 				// allow access without auth to the following routes
 				.antMatchers(HttpMethod.GET, "/img/**", "/css/**", "/js/**").permitAll()
-				.antMatchers(HttpMethod.DELETE, "/api/users/new", "/api/**").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/users/new", "/api/**").permitAll()
-				.antMatchers(HttpMethod.PUT, "/api/session/mine", "/api/**").permitAll().antMatchers(HttpMethod.OPTIONS)
+				.antMatchers(HttpMethod.DELETE, "/api/users/new").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/users/new").permitAll()
+				.antMatchers(HttpMethod.PUT, "/api/session/login").permitAll().antMatchers(HttpMethod.OPTIONS)
 				.permitAll().anyRequest().authenticated().and().csrf().disable();
 	}
 
