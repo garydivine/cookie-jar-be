@@ -108,6 +108,8 @@ public class SeedData {
 				"375", "24", "8 minutes");
 
 		recipeRepo.save(oatmealRaisinCookie);
+		oatmealRaisinCookie.setUser(karen);
+		recipeRepo.save(oatmealRaisinCookie);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/4", "cups", flour, oatmealRaisinCookie));
 		ingredientRecipeRepo
@@ -128,6 +130,8 @@ public class SeedData {
 				"375", "24", "8 to 10 minutes");
 
 		recipeRepo.save(chocolateChipCookie);
+		chocolateChipCookie.setUser(marci);
+		recipeRepo.save(chocolateChipCookie);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2 1/4", "cups", flour, chocolateChipCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "", eggs, chocolateChipCookie));
@@ -146,6 +150,8 @@ public class SeedData {
 				"350", "60", "12 to 15 minutes");
 
 		recipeRepo.save(peanutButterCloudCookie);
+		peanutButterCloudCookie.setUser(admin);
+		recipeRepo.save(peanutButterCloudCookie);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "cups", flour, peanutButterCloudCookie));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("2", "", eggs, peanutButterCloudCookie));
@@ -163,6 +169,8 @@ public class SeedData {
 				"350", "24", "40 to 45 minutes");
 
 		recipeRepo.save(dateBar);
+		dateBar.setUser(admin);
+		recipeRepo.save(dateBar);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/2", "cups", flour, dateBar));
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 to 1/2 ", "pounds", dates, dateBar));
@@ -178,6 +186,8 @@ public class SeedData {
 				"In a large pot mix together the sugar, cocoa and milk. Cook on medium/low heat for about 5 minutes or until the sugar dissolves. Turn the heat up to medium and add butter and allow that to melt and come to a low boil.Stir in oats, salt and vanilla – mix well. Finally add in coconut and stir until everything is coated. Drop by teaspoon onto a parchment paper lined cookie sheet and let set.",
 				"0", "24", "no bake");
 
+		recipeRepo.save(chocolateCoconutHaystack);
+		chocolateCoconutHaystack.setUser(admin);
 		recipeRepo.save(chocolateCoconutHaystack);
 
 		ingredientRecipeRepo.save(new IngredientRecipeListItem("1 1/4", "cups", whiteSugar, chocolateCoconutHaystack));
