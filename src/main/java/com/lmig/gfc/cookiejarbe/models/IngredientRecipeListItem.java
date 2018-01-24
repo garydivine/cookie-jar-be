@@ -18,7 +18,7 @@ public class IngredientRecipeListItem {
 	@SequenceGenerator(name = "ingredient_recipe_id_seq", sequenceName = "ingredient_recipe_id_seq")
 	private int id;
 	
-	@Column(nullable = false)
+	@Column
 	private String quantity;
 
 	private String unitOfMeasurement;

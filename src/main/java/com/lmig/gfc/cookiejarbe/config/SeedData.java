@@ -21,7 +21,7 @@ public class SeedData {
 			UserRepository userRepo, //
 			PasswordEncoder encoder) {
 
-		User admin = userRepo.save(new User("admin", "user", "admin@admin.com", encoder.encode("password")));
+		User admin = userRepo.save(new User("Admin", "user", "admin@admin.com", encoder.encode("password")));
 		User karen = userRepo.save(new User("Karen", "A", "karen@cookie.jar", encoder.encode("password")));
 		User marci = userRepo.save(new User("Marci", "T", "marci@cookie.jar", encoder.encode("password")));
 
